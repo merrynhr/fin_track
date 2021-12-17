@@ -8,12 +8,17 @@ class StocksController < ApplicationController
           format.js { render partial: 'users/result' }
         end
       else     
-        flash[:alert] = "Symbol not found"
-        redirect_to my_portfolio_path
+        respond_to do |format|
+          flash.now[:alert] = "Symbol not found"
+          format.js { render partial: 'users/result' }
+        end
       end
-    else    
-      flash[:alert] = "Please enter a symbol"
-      redirect_to my_portfolio_path
+    else   
+      respond_to do |format|
+        flash.now[:alert] = "Please enter a ticker symbol"
+        format.js { render partial: 'users/result' }
+      end
     end
   end
+
 end

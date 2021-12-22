@@ -27,6 +27,10 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}" if first_name || last_name
     "FinTracker"
   end
+
+  def search 
+    render json: params[:friend]
+  end
 end
 
 

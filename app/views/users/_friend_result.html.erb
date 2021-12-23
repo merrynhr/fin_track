@@ -11,8 +11,15 @@
             <td><strong>Name: </strong> <%= friend.full_name %></td>
             <td><strong>Email: </strong> <%= friend.email %></td>
             <td><%= link_to "View Profile", '#', class: "btn btn-small btn-success" %>
-            <%= link_to 'Add Friend', '#',
-                                        class: "btn btn-success", method: :post %></td>
+            <% if current_user.not_friends_with?(friend.id) %>
+              <%= link_to 'Add Friend', '#',
+                                          class: "btn btn-success", method: :post %>
+            <% else %>
+              <span class="badge badge-secondar">
+                Current friend
+              </span>
+            <% end %>
+            </td>
           </tr>
         <% end %> 
       </tbody>   

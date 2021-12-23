@@ -4,14 +4,18 @@
 
 <% if @friends %>
   <div class="card card-header results-block">
-    <% @friends.each do |friend| %>
-      <strong>Name: </strong> <%= friend.full_name %>
-      <strong>Email: </strong> <%= friend.email %>
-      <%= link_to "View Profile", '#', class: "btn btn-small btn-success" %>
-      <%= link_to 'Add Friend', '#',
-                                    class: "btn btn-success", method: :post %>
-      <hr>
-      <br>
-    <% end %>                                
+    <table class="col-md-12">
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td><strong>Name: </strong> <%= friend.full_name %></td>
+            <td><strong>Email: </strong> <%= friend.email %></td>
+            <td><%= link_to "View Profile", '#', class: "btn btn-small btn-success" %>
+            <%= link_to 'Add Friend', '#',
+                                        class: "btn btn-success", method: :post %></td>
+          </tr>
+        <% end %> 
+      </tbody>   
+    </table>                            
   </div>
 <% end %>
